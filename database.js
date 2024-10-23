@@ -1,15 +1,13 @@
-//later remove the individual databases to make one central database here
-//connect both models to this database 
-
 const { Sequelize, DataTypes } = require("sequelize");
+const config = require('./config');
 
 const sequelize = new Sequelize (
-    'database', 
-    'usename', 
-    'password', {
-    host: 'localhost',
-    dialect: 'sqlite',
-    storage: 'database.sqlite',
+    config.DATABASE_SETTINGS.database, 
+    config.DATABASE_SETTINGS.username, 
+    config.DATABASE_SETTINGS.password, {
+    host: config.DATABASE_SETTINGS.host,
+    dialect: config.DATABASE_SETTINGS.dialect,
+    storage: config.DATABASE_SETTINGS.storage,
 });
 
 const {roomModel} = require("./room/room_model");
